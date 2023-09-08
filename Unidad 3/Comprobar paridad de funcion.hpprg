@@ -1,0 +1,56 @@
+%%HP: T(0)A(D)F(.);
+@ Argumentos: (F ç FLAG)
+@ Creado con HPUserEdit 6
+
+´ 
+IFERR
+
+-103 CF           @MODO EXACTO
+-17 SF -18 SF     @MODO RADIAN
+
+ ç F  @Se podria eleminar esta variable temporal pero seria confuso
+ 
+  ´
+  @Comprobar si el argumento es funcion (9. SYMB)   
+  F TYPE 9. ã 
+  ´ 120 .2 BEEP 115 .45 BEEP "El argumento no es funcion" MSGBOX KILL ª
+  IFT
+  
+     @Obtiene los argumento de fun. (1) fun. con -x (2) y fun. negativa (3)   
+     F 
+     F '-X' lim 
+     F NEG
+  ª 
+  
+  ç F FX FN
+  ´
+  @Colocar funcion para anexarla al ARRY despues del 'CASE'  
+  F 
+    
+    CASE
+        F e lim çNUM FX e lim çNUM SAME         @Caso 1 (F = FX)
+        THEN
+        'Par'
+        END
+              FX e lim çNUM FN e lim çNUM SAME   @Caso 2 (FX = FN)
+              THEN
+              'Impar'
+              END
+                     1.                         @Caso 3 (no cumple ninguna)
+                     THEN
+                     'Ninguna'
+                     END
+    END                                      
+
+  @Crea  ARRY con el 'F' del inicio y el resultado de 'CASE'
+  {2 1} çARRY 
+  ª
+  
+@Si no hay argumentos se muestra esto
+THEN
+120 .2 BEEP 115 .45 BEEP 
+"!!Ingrese una funcion
+
+  (F ç FLAG)" MSGBOX
+END  
+ª

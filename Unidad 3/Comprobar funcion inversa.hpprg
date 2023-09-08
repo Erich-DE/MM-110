@@ -1,0 +1,37 @@
+%%HP: T(0)A(D)F(.);
+@ Argumentos: (F F' ç FLAG)
+@ Creado con HPUserEdit 6
+
+´ 
+IFERR
+ ç F FINV
+  ´
+   @Comprobar que los arguemntos sean funciones (objeto 9. symb)  
+   F TYPE 9. ã FINV TYPE 9. ã AND 
+   ´ 120 .2 BEEP 115 .45 BEEP "Los argumentos no son funciones" MSGBOX KILL ª
+   IFT    
+      
+    @Colocar de forma visual ambas funciones
+    'f'      F = 
+    f -1 ^   FINV =
+    {2 1} çARRY
+  
+     @Comprobacion si al evaluar una dentro de otra es igual  
+     F FINV lim EVAL
+     FINV F lim EVAL
+     SAME                    
+     ´"Es funcion  ê        
+inversa"ª          
+     ´"No es funcion  ê
+inversa"ª   
+     IFTE
+        
+  ª
+@Si no hay argumentos se muestra esto
+THEN
+120 .2 BEEP 115 .45 BEEP
+"!!Ingrese dos funciones
+
+ (F F' ç FLAG)" MSGBOX
+END  
+ª

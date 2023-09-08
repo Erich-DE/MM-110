@@ -1,0 +1,41 @@
+%%HP: T(0)A(D)F(.);
+@ Argumentos:
+@ Autor: Erich Daniel Enamorado Aceituno
+
+´ ç F
+  ´
+F F y lim X = y SOLVE   @CAMBIO DE VARIABLE
+    @Veridicar si hay 1 o 2 soluciones (5. representa un compuesto con 2 solc.)
+    IF DUP TYPE 5. SAME
+    
+    @Caso de 2 soluciones               
+    THEN
+       @Verifica el dominio en las dos funciones del compuesto   
+       DUP F SWAP lim DUP SIZE F SWAP NDUPN çLIST  
+       SAME
+       ´"FUNCION INVERSA"ª
+       ´"NO ES INVERSA"ª
+       IFTE
+    
+    
+    @Caso de 1 solucion       
+    ELSE                   
+       OBJç 4 ROLL 3 DROPN
+       ç F FINV
+          ´
+          @Colocar de forma visual ambas funciones          
+          f F =   f -1 ^ FINV =  {2 1} çARRY
+
+          @Comprobacion si al evaluar una dentro de otra es igual
+          F FINV lim EVAL
+          FINV F lim EVAL
+          SAME
+          ´"Es funcion  ê
+inversa"ª
+         ´"No es funcion  ê
+inversa"ª
+         IFTE                            
+          ª
+    END
+  ª    
+ª
